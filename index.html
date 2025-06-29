@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iBlog - Dynamic Blogging Platform</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <div class="logo">iBlog 💻</div>
+            <div class="nav-links">
+                <button id="homeBtn" class="nav-btn btn-secondary">
+                    <i class="fas fa-home"></i> Home
+                </button>
+                <button id="loginBtn" class="nav-btn btn-primary">
+                    <i class="fas fa-sign-in-alt"></i> Login
+                </button>
+                <button id="signupBtn" class="nav-btn btn-secondary">
+                    <i class="fas fa-user-plus"></i> Sign Up
+                </button>
+                <div id="userMenu" class="user-menu" style="display: none;">
+                    <span id="welcomeText">Welcome, User!</span>
+                    <button id="createPostBtn" class="nav-btn btn-primary">
+                        <i class="fas fa-plus"></i> New Post
+                    </button>
+                    <button id="dashboardBtn" class="nav-btn btn-secondary">
+                        <i class="fas fa-tachometer-alt"></i> Dashboard
+                    </button>
+                    <button id="logoutBtn" class="nav-btn btn-secondary">
+                        <i class="fas fa-sign-out-alt"></i> Logout
+                    </button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container">
+        <section id="homeSection" class="section active">
+            <div class="hero">
+                <h1>Welcome to iBlog</h1>
+                <p>Share your thoughts, connect with others, and discover amazing stories</p>
+                <button id="getStartedBtn" class="btn btn-primary">Get Started</button>
+            </div>
+            
+            <div class="blog-grid" id="blogGrid">
+                <h2>Latest Posts</h2>
+                <div class="posts-container" id="postsContainer">
+                </div>
+            </div>
+        </section>
+
+        <section id="loginSection" class="section">
+            <div class="auth-container">
+                <div class="auth-card">
+                    <h2><i class="fas fa-sign-in-alt"></i> Login</h2>
+                    <form id="loginForm">
+                        <div class="form-group">
+                            <label for="loginEmail">Email</label>
+                            <input type="email" id="loginEmail" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="loginPassword">Password</label>
+                            <input type="password" id="loginPassword" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Login</button>
+                    </form>
+                    <p>Don't have an account? <a href="#" id="switchToSignup">Sign up here</a></p>
+                </div>
+            </div>
+        </section>
+
+        <section id="signupSection" class="section">
+            <div class="auth-container">
+                <div class="auth-card">
+                    <h2><i class="fas fa-user-plus"></i> Sign Up</h2>
+                    <form id="signupForm">
+                        <div class="form-group">
+                            <label for="signupName">Full Name</label>
+                            <input type="text" id="signupName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="signupEmail">Email</label>
+                            <input type="email" id="signupEmail" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="signupPassword">Password</label>
+                            <input type="password" id="signupPassword" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="confirmPassword">Confirm Password</label>
+                            <input type="password" id="confirmPassword" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Sign Up</button>
+                    </form>
+                    <p>Already have an account? <a href="#" id="switchToLogin">Login here</a></p>
+                </div>
+            </div>
+        </section>
+
+        <section id="dashboardSection" class="section">
+            <div class="dashboard">
+                <h2><i class="fas fa-tachometer-alt"></i> My Dashboard</h2>
+                <div class="dashboard-stats">
+                    <div class="stat-card">
+                        <i class="fas fa-blog"></i>
+                        <h3 id="userPostCount">0</h3>
+                        <p>My Posts</p>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-comments"></i>
+                        <h3 id="userCommentCount">0</h3>
+                        <p>My Comments</p>
+                    </div>
+                </div>
+                <div class="user-posts">
+                    <h3>My Posts</h3>
+                    <div id="userPostsContainer">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="postEditorSection" class="section">
+            <div class="post-editor">
+                <h2 id="editorTitle"><i class="fas fa-plus"></i> Create New Post</h2>
+                <form id="postForm">
+                    <div class="form-group">
+                        <label for="postTitle">Title</label>
+                        <input type="text" id="postTitle" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="postCategory">Category</label>
+                        <select id="postCategory" required>
+                            <option value="">Select Category</option>
+                            <option value="Technology">Technology</option>
+                            <option value="Lifestyle">Lifestyle</option>
+                            <option value="Travel">Travel</option>
+                            <option value="Food">Food</option>
+                            <option value="Business">Business</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="postContent">Content</label>
+                        <textarea id="postContent" rows="10" required></textarea>
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-save"></i> Save Post
+                        </button>
+                        <button type="button" id="cancelEditBtn" class="btn btn-secondary">
+                            <i class="fas fa-times"></i> Cancel
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </section>
+
+        <section id="postDetailSection" class="section">
+            <div class="post-detail">
+                <button id="backToHomeBtn" class="btn btn-secondary">
+                    <i class="fas fa-arrow-left"></i> Back to Posts
+                </button>
+                <article id="postDetailContent">
+                </article>
+                <div class="comments-section">
+                    <h3><i class="fas fa-comments"></i> Comments</h3>
+                    <div id="commentForm" class="comment-form" style="display: none;">
+                        <textarea id="commentText" placeholder="Write your comment here..." rows="3"></textarea>
+                        <button id="submitCommentBtn" class="btn btn-primary">
+                            <i class="fas fa-paper-plane"></i> Post Comment
+                        </button>
+                    </div>
+                    <div id="commentsContainer">
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div id="toast" class="toast"></div>
+
+    <div id="loadingSpinner" class="loading-spinner" style="display: none;">
+        <div class="spinner"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
